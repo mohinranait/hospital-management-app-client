@@ -16,7 +16,7 @@ const Button = ({
             onClick();
           }
         }}
-        className={`rounded-lg  px-4 py-1 text-lg text-white duration-300 active:scale-95 ${varient} ${css} `}
+        className={`rounded-lg flex justify-center items-center  px-4 py-1 text-lg text-white duration-300 active:scale-95 ${varient} ${css} `}
       >
         {text}
       </button>

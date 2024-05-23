@@ -41,7 +41,7 @@ const ApplicationLayout = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-4 ">
+      <div className="flex gap-1 pt-1">
         <div className="bg-white shadow h-[calc(100vh-65px)] w-[80px]">
           <ul className="flex items-center flex-col mt-6 gap-8">
             <li>
@@ -70,7 +70,7 @@ const ApplicationLayout = ({ children }) => {
             </li>
           </ul>
         </div>
-        <div className="mt-3 mr-4 w-full h-[calc(100vh-80px)] overflow-y-auto">
+        <div className="pt-3 pl-4 pr-4 bg-bg w-full h-[calc(100vh-80px)] overflow-y-auto">
           {children}
         </div>
       </div>

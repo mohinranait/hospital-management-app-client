@@ -52,6 +52,8 @@ const Appoinment = () => {
                               placeholder={"NID number"}
                               htmlFor={"NID number"}
                               width="w-full"
+                              value=""
+                              onChange={""}
                             />
                           </div>
                         </div>

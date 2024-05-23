@@ -3,7 +3,7 @@ import React from "react";
 const DoctorAvailable = () => {
   return (
     <>
-      <div className="flex gap-4 p-2 shadow overflow-hidden rounded">
+      <div className="flex gap-4 p-2 shadow bg-white overflow-hidden rounded">
         <div className="w-[120px]">
           <img
             className="w-full object-cover rounded h-full"

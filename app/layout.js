@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Hospital management app",
@@ -11,7 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-bg `}>{children}</body>
+      <body className={`${inter.className} bg-bg `}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
