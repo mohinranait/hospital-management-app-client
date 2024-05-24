@@ -6,6 +6,7 @@ const Button = ({
   onClick,
   css,
   varient = "bg-primary",
+  disable = false,
 }) => {
   return (
     <>
@@ -16,6 +17,7 @@ const Button = ({
             onClick();
           }
         }}
+        disabled={disable}
         className={`rounded-lg flex justify-center items-center  px-4 py-1 text-lg text-white duration-300 active:scale-95 ${varient} ${css} `}
       >
         {text}

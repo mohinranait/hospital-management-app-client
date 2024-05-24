@@ -1,8 +1,11 @@
 "use client";
+import useAxios from "@/hooks/useAxios";
 import DoctorAvailable from "@/ui/cards/DoctorAvailable";
 import InputElement from "@/ui/elements/InputElement";
 import SelectElement from "@/ui/elements/SelectElement";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const types = [
   {
@@ -30,6 +33,25 @@ const types = [
 const AllUsersManagement = () => {
   const [userTypes, setUserTypes] = useState(types);
   const [toggle, setToggle] = useState(false);
+  const axios = useAxios();
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const { data } = await axios.get(`/users`);
+
+        if (data?.success) {
+          setUsers(data?.users);
+        } else {
+          toast.error("Somthin wrong");
+        }
+      } catch (error) {
+        toast.error(error.message);
+      }
+    })();
+  }, []);
+
   return (
     <div>
       <div className="px-4 py-4 bg-white mb-5 shadow rounded">
@@ -55,20 +77,9 @@ const AllUsersManagement = () => {
         </div>
       </div>
       <div className="grid grid-cols-4 gap-5">
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
-        <DoctorAvailable />
+        {users?.map((user) => (
+          <DoctorAvailable key={user?._id} user={user} />
+        ))}
       </div>
     </div>
   );

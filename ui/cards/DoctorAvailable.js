@@ -1,9 +1,18 @@
-import React from "react";
+"use client";
+import GlobalModal from "@/components/modals/GlobalModal";
+import React, { useState } from "react";
+import ViewUserModalCard from "./ViewUserModalCard";
 
-const DoctorAvailable = () => {
+const DoctorAvailable = ({ user }) => {
+  const { name, email, role } = user || {};
+  let [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <div className="flex gap-4 p-2 shadow bg-white overflow-hidden rounded">
+      <div
+        onClick={() => setIsOpen(true)}
+        className="flex gap-4 p-2 shadow bg-white overflow-hidden rounded"
+      >
         <div className="w-[120px]">
           <img
             className="w-full object-cover rounded h-full"
@@ -12,9 +21,7 @@ const DoctorAvailable = () => {
           />
         </div>
         <div className="">
-          <p className="text-[15px] font-semibold text-gray-700">
-            Mahir Shikder
-          </p>
+          <p className="text-[15px] font-semibold text-gray-700">{name}</p>
           <p className="text-[12px] font-normal text-gray-600">Giologist</p>
           <p className="text-[13px]">
             Today : <span>available</span>
@@ -26,6 +33,9 @@ const DoctorAvailable = () => {
             Time : <span className="">8:00 AM - 01:00 PM</span>
           </p>
         </div>
+        <GlobalModal isOpen={isOpen} setIsOpen={setIsOpen}>
+          <ViewUserModalCard user={user} />
+        </GlobalModal>
       </div>
     </>
   );

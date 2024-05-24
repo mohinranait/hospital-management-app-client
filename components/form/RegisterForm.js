@@ -45,7 +45,7 @@ const RegisterForm = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post(`${SERVER_URL}/user`, data);
+      const res = await axios.post(`${SERVER_URL}/user/register`, data);
 
       if (res?.data?.success) {
         toast.success("Register successfull");

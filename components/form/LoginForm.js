@@ -1,5 +1,6 @@
 "use client";
 
+import { addUser } from "@/features/auth/authSlice";
 import useAxios from "@/hooks/useAxios";
 import Button from "@/ui/buttons/Button";
 import InputElement from "@/ui/elements/InputElement";
@@ -9,8 +10,10 @@ import LoadingSpinner from "@/ui/spinners/LoadingSpinner";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const axios = useAxios();
   const router = useRouter();
@@ -50,6 +53,7 @@ const LoginForm = () => {
       if (res?.data?.success) {
         toast.success("Login successfull");
         const role = res?.data?.user?.role;
+        dispatch(addUser(res?.data));
         if (role == "Patient") {
           router.push("/");
         } else if (role === "Support") {
